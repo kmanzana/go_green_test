@@ -14,7 +14,11 @@ Test application using a Rails API with React to display photo albums
   - [app/javascript/components/user.jsx](app/javascript/components/user.jsx)
 
 
-### Steps to run for testing:
+### Testing the app
+#### Heroku 
+[go-green-test.herokuapp.com](https://go-green-test.herokuapp.com)
+
+#### Locally
 1. `git clone https://github.com/kmanzana/go_green_test.git`
 2. `cd go_green_test`
 3. `bundle install` (make sure to have ruby, rails, bundler installed)
