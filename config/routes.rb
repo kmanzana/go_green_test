@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
+  get '/albums/:id', to: 'pages#home'
+  get '/users/:id',  to: 'pages#home'
 
   get '/api/albums',     to: 'api#albums'
   get '/api/albums/:id', to: 'api#album'
