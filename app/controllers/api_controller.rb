@@ -1,6 +1,5 @@
 class ApiController < ActionController::API
   def albums
-    Rails.cache.delete('albums')
     albums = Rails.cache.fetch('albums', expires_in: 2.minutes) do
       AlbumRepository.new.all
     end
