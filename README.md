@@ -4,14 +4,14 @@ Test application using a Rails API with React to display photo albums
 ### Notes
 - 2 minute caching of all API endpoints
 - important files:
-  - app/controllers/api_controller.rb
-  - app/models/album_repository.rb
-  - app/models/user_repository.rb
+  - [app/controllers/api_controller.rb](app/controllers/api_controller.rb)
+  - [app/models/album_repository.rb](app/models/album_repository.rb)
+  - [app/models/user_repository.rb](app/models/user_repository.rb)
   - [app/models/photo_album_api.rb](app/models/photo_album_api.rb)
-  - app/javascript/components/home.jsx
-  - app/javascript/components/albums.jsx
-  - app/javascript/components/album.jsx
-  - app/javascript/components/user.jsx
+  - [app/javascript/components/home.jsx](app/javascript/components/home.jsx)
+  - [app/javascript/components/albums.jsx](app/javascript/components/albums.jsx)
+  - [app/javascript/components/album.jsx](app/javascript/components/album.jsx)
+  - [app/javascript/components/user.jsx](app/javascript/components/user.jsx)
 
 
 ### Steps to run for testing:
