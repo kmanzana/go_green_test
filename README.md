@@ -23,7 +23,6 @@ Test application using a Rails API with React to display photo albums
 6. carouse the app
 
 ### TODOS:
-- loading indicator on index page
 - pagination
 - google maps to show location of user
 - load all users/photos to reduce external api calls
