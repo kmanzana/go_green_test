@@ -7,7 +7,7 @@ Test application using a Rails API with React to display photo albums
   - app/controllers/api_controller.rb
   - app/models/album_repository.rb
   - app/models/user_repository.rb
-  - app/models/photo_album_api.rb
+  - [app/models/photo_album_api.rb](blob/master/app/models/photo_album_api.rb)
   - app/javascript/components/home.jsx
   - app/javascript/components/albums.jsx
   - app/javascript/components/album.jsx
