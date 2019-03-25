@@ -1,6 +1,7 @@
 class ApiController < ActionController::API
   def albums
-    albums = Rails.cache.fetch('albums', expires_in: 30.minutes) do
+    Rails.cache.delete('albums')
+    albums = Rails.cache.fetch('albums', expires_in: 2.minutes) do
       AlbumRepository.new.all
     end
 
@@ -8,7 +9,7 @@ class ApiController < ActionController::API
   end
 
   def album
-    album = Rails.cache.fetch("album-#{params[:id]}", expires_in: 30.minutes) do
+    album = Rails.cache.fetch("album-#{params[:id]}", expires_in: 2.minutes) do
       AlbumRepository.new.find(params[:id])
     end
 
@@ -16,8 +17,8 @@ class ApiController < ActionController::API
   end
 
   def user
-    user = Rails.cache.fetch("user-#{params[:id]}", expires_in: 30.minutes) do
-      AlbumRepository.new.find_user(params[:id])
+    user = Rails.cache.fetch("user-#{params[:id]}", expires_in: 2.minutes) do
+      UserRepository.new.find(params[:id])
     end
 
     render json: user

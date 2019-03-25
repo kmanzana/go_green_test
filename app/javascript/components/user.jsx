@@ -1,87 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-dom';
-
-class Albums extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {albums: []};
-  }
-
-  componentDidMount() {
-    fetch('/api/albums')
-      .then(res => res.json())
-      .then(
-        (result) => this.setState({albums: result}),
-        (error) => console.log(error)
-      )
-  }
-
-  render() {
-    const cards = this.state.albums.map((album) => {
-      return (
-        <div className='card' key={album.id}>
-          <Link to={`/albums/${album.id}`}>
-            <img src={album.thumbnail} className='card-img-top' alt='...'/>
-          </Link>
-          <div className='card-body'>
-            <h5 className='card-title'>{album.user_name}</h5>
-            <p className='card-text'>{album.title}</p>
-          </div>
-        </div>
-      )
-    })
-
-    return (
-      <div>
-        <h2>Albums</h2>
-        <div className='card-columns'>{cards}</div>
-      </div>
-    );
-  }
-}
-
-class Album extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      id: props.match.params.id,
-      album: {photos: []}
-    };
-  }
-
-  componentDidMount() {
-    fetch(`/api/albums/${this.state.id}`)
-      .then(res => res.json())
-      .then(
-        (result) => this.setState({album: result}),
-        (error) => console.log(error)
-      )
-  }
-
-  render() {
-    const cards = this.state.album.photos.map((photo) => {
-      return (
-        <div className='card' key={photo.id}>
-          <img src={photo.url} className='card-img' alt='...'/>
-          <div className='card-img-overlay'>
-            <h5 className='card-title'>{photo.title}</h5>
-          </div>
-        </div>
-      )
-    })
-
-    return (
-      <div>
-        <h2>Album: {this.state.album.title}</h2>
-        <Link to={`/users/${this.state.album.user_id}`}>
-          <h3>{this.state.album.user_name}</h3>
-        </Link>
-        <div className='card-columns'>{cards}</div>
-      </div>
-    );
-  }
-}
+import { Link } from 'react-router-dom';
 
 class User extends React.Component {
   constructor(props) {
@@ -111,7 +29,13 @@ class User extends React.Component {
 
     return (
       <div>
-        <h2>User Page</h2>
+        <nav aria-label='breadcrumb'>
+          <ol className='breadcrumb mt-3'>
+            <li className='breadcrumb-item'><Link to='/'>Home</Link></li>
+            <li className='breadcrumb-item'>Users</li>
+            <li className='breadcrumb-item active' aria-current='page'>{this.state.id}</li>
+          </ol>
+        </nav>
         <dl className='row'>
           <dt className='col-sm-2'>Name</dt>
           <dd className='col-sm-10'>{this.state.user.name}</dd>
@@ -156,25 +80,11 @@ class User extends React.Component {
             </dl>
           </dd>
         </dl>
-        <h3>Albums</h3>
-        <div className='list-group'>{albums}</div>
+        <h4>Albums</h4>
+        <div className='list-group mb-5'>{albums}</div>
       </div>
     );
   }
 }
 
-class Home extends React.Component {
-  render() {
-    return (
-      <Router>
-        <div>
-          <Route exact path='/' component={Albums} />
-          <Route path='/albums/:id' component={Album} />
-          <Route path='/users/:id' component={User} />
-        </div>
-      </Router>
-    );
-  }
-}
-
-export default Home;
+export default User;
